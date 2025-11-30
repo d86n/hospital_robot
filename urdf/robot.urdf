@@ -1,0 +1,131 @@
+<?xml version="1.0" ?>
+<robot name="my-robot">
+  <link name="base_footprint"/>
+
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="body"/>
+    <origin xyz="0 0 0.5" rpy="0 0 0"/> 
+  </joint>
+
+  <!-- Body -->
+  <link name="body">
+    <inertial>
+      <origin xyz="-0.151116 0.399606 0.0581464" rpy="0 0 0"/>
+      <mass value="57.976"/>
+      <inertia ixx="8.74891" ixy="-6.69946e-07" ixz="4.47173e-06" iyy="8.88386" iyz="-0.454021" izz="1.73978"/>
+    </inertial>
+    <!-- Part body -->
+    <visual>
+      <origin xyz="-0.151116 0.376898 -0.265217" rpy="0 -0 2.42861e-16"/>
+      <geometry>
+        <mesh filename="package://hospital_robot/meshes/body.stl"/>
+      </geometry>
+      <material name="body_material">
+        <color rgba="1 1 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.151116 0.376898 -0.265217" rpy="0 -0 2.42861e-16"/>
+      <geometry>
+        <mesh filename="package://hospital_robot/meshes/body.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link standard_wheel -->
+  <link name="standard_wheel">
+    <inertial>
+      <origin xyz="4.99107e-17 -5.58946e-18 0.00300646" rpy="0 0 0"/>
+      <mass value="0.465267"/>
+      <inertia ixx="0.00047604" ixy="0" ixz="1.5076e-19" iyy="0.00047604" iyz="0" izz="0.000800321"/>
+    </inertial>
+    <!-- Part standard_wheel -->
+    <visual>
+      <origin xyz="5.55112e-17 0 0.01" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://hospital_robot/meshes/standard_wheel.stl"/>
+      </geometry>
+      <material name="standard_wheel_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="5.55112e-17 0 0.01" rpy="1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://hospital_robot/meshes/standard_wheel.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from body to standard_wheel -->
+  <joint name="joint_left_wheel" type="revolute">
+    <origin xyz="0.0788842 0.476898 -0.250217" rpy="-1.5708 -0 1.5708"/>
+    <parent link="body"/>
+    <child link="standard_wheel"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+  </joint>
+  <!-- Link standard_wheel_2 -->
+  <link name="standard_wheel_2">
+    <inertial>
+      <origin xyz="2.34911e-18 5.58946e-18 0.00300646" rpy="0 0 0"/>
+      <mass value="0.465267"/>
+      <inertia ixx="0.00047604" ixy="0" ixz="-4.99633e-37" iyy="0.00047604" iyz="0" izz="0.000800321"/>
+    </inertial>
+    <!-- Part standard_wheel_2 -->
+    <visual>
+      <origin xyz="0 0 0.01" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://hospital_robot/meshes/standard_wheel.stl"/>
+      </geometry>
+      <material name="standard_wheel_2_material">
+        <color rgba="0.498039 0.498039 0.498039 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0.01" rpy="-1.5708 1.5708 0"/>
+      <geometry>
+        <mesh filename="package://hospital_robot/meshes/standard_wheel.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from body to standard_wheel_2 -->
+  <joint name="joint_right_wheel" type="revolute">
+    <origin xyz="-0.381116 0.476898 -0.250217" rpy="1.5708 -0 1.5708"/>
+    <parent link="body"/>
+    <child link="standard_wheel_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+  </joint>
+  <!-- Link spherical_wheel -->
+  <link name="spherical_wheel">
+    <inertial>
+      <origin xyz="1.62648e-18 -2.2554e-50 1.38778e-17" rpy="0 0 0"/>
+      <mass value="2.48241"/>
+      <inertia ixx="0.00179354" ixy="-3.5815e-49" ixz="0" iyy="0.00179354" iyz="0" izz="0.00179354"/>
+    </inertial>
+    <!-- Part spherical_wheel -->
+    <visual>
+      <origin xyz="0 0 -0.0425" rpy="0 -0 -1.38667e-32"/>
+      <geometry>
+        <mesh filename="package://hospital_robot/meshes/spherical_wheel.stl"/>
+      </geometry>
+      <material name="spherical_wheel_material">
+        <color rgba="0.262745 0.282353 0.301961 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.0425" rpy="0 -0 -1.38667e-32"/>
+      <geometry>
+        <mesh filename="package://hospital_robot/meshes/spherical_wheel.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from body to spherical_wheel -->
+  <joint name="joint_spherical_wheel" type="fixed">
+    <origin xyz="-0.151116 0.201898 -0.265217" rpy="0 -0 2.42861e-16"/>
+    <parent link="body"/>
+    <child link="spherical_wheel"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+</robot>

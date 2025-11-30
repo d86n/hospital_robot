@@ -1,4 +1,4 @@
-# Robot lễ tân bệnh viện - ROS 1
+# Robot trong bệnh viện - ROS 1
 
 ## Yêu cầu cài đặt
 

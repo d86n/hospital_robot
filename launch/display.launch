@@ -1,0 +1,10 @@
+<launch>
+  <arg name="model" default="$(find hospital_robot)/urdf/robot.urdf"/>
+  
+  <param name="robot_description" textfile="$(arg model)" />
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find hospital_robot)/urdf/config.rviz" required="true" />
+  
+</launch>
