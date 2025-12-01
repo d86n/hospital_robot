@@ -8,14 +8,12 @@
     <origin xyz="0 0 0.31" rpy="0 0 0"/> 
   </joint>
 
-  <!-- Body -->
   <link name="body">
     <inertial>
       <origin xyz="-0.151116 0.399606 0.0581464" rpy="0 0 0"/>
       <mass value="57.976"/>
       <inertia ixx="8.74891" ixy="-6.69946e-07" ixz="4.47173e-06" iyy="8.88386" iyz="-0.454021" izz="1.73978"/>
     </inertial>
-    <!-- Part body -->
     <visual>
       <origin xyz="-0.151116 0.376898 -0.265217" rpy="0 -0 2.42861e-16"/>
       <geometry>
@@ -32,53 +30,51 @@
       </geometry>
     </collision>
   </link>
-  <!-- Link standard_wheel -->
+
   <link name="standard_wheel">
     <inertial>
-      <origin xyz="4.99107e-17 -5.58946e-18 0.00300646" rpy="0 0 0"/>
-      <mass value="0.465267"/>
-      <inertia ixx="0.00047604" ixy="0" ixz="1.5076e-19" iyy="0.00047604" iyz="0" izz="0.000800321"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.465"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
-    <!-- Part standard_wheel -->
     <visual>
-      <origin xyz="5.55112e-17 0 0.01" rpy="1.5708 1.5708 0"/>
+      <origin xyz="0 0 0.01" rpy="1.5708 1.5708 0"/>
       <geometry>
         <mesh filename="package://hospital_robot/meshes/standard_wheel.stl"/>
       </geometry>
       <material name="standard_wheel_material">
-        <color rgba="0.498039 0.498039 0.498039 1"/>
+        <color rgba="0.5 0.5 0.5 1"/>
       </material>
     </visual>
     <collision>
-      <origin xyz="5.55112e-17 0 0.01" rpy="1.5708 1.5708 0"/>
+      <origin xyz="0 0 0.01" rpy="1.5708 1.5708 0"/>
       <geometry>
         <mesh filename="package://hospital_robot/meshes/standard_wheel.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Joint from body to standard_wheel -->
-  <joint name="joint_left_wheel" type="revolute">
+
+  <joint name="front_left_wheel_joint" type="continuous">
     <origin xyz="0.0788842 0.476898 -0.250217" rpy="-1.5708 -0 1.5708"/>
     <parent link="body"/>
     <child link="standard_wheel"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+    <limit effort="20" velocity="20"/>
   </joint>
-  <!-- Link standard_wheel_2 -->
+
   <link name="standard_wheel_2">
     <inertial>
-      <origin xyz="2.34911e-18 5.58946e-18 0.00300646" rpy="0 0 0"/>
-      <mass value="0.465267"/>
-      <inertia ixx="0.00047604" ixy="0" ixz="-4.99633e-37" iyy="0.00047604" iyz="0" izz="0.000800321"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.465"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
-    <!-- Part standard_wheel_2 -->
     <visual>
       <origin xyz="0 0 0.01" rpy="-1.5708 1.5708 0"/>
       <geometry>
         <mesh filename="package://hospital_robot/meshes/standard_wheel.stl"/>
       </geometry>
       <material name="standard_wheel_2_material">
-        <color rgba="0.498039 0.498039 0.498039 1"/>
+        <color rgba="0.5 0.5 0.5 1"/>
       </material>
     </visual>
     <collision>
@@ -88,128 +84,106 @@
       </geometry>
     </collision>
   </link>
-  <!-- Joint from body to standard_wheel_2 -->
-  <joint name="joint_right_wheel" type="revolute">
+
+  <joint name="front_right_wheel_joint" type="continuous">
     <origin xyz="-0.381116 0.476898 -0.250217" rpy="1.5708 -0 1.5708"/>
     <parent link="body"/>
     <child link="standard_wheel_2"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+    <axis xyz="0 0 -1"/>
+    <limit effort="20" velocity="20"/>
   </joint>
 
-  <transmission name="trans_left_wheel">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint_left_wheel"> <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_left">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-</transmission>
-
-<transmission name="trans_right_wheel">
-    <type>transmission_interface/SimpleTransmission</type>
-    <joint name="joint_right_wheel"> <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-    </joint>
-    <actuator name="motor_right">
-        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
-        <mechanicalReduction>1</mechanicalReduction>
-    </actuator>
-</transmission>
-
-  <!-- Link spherical_wheel -->
   <link name="spherical_wheel">
     <inertial>
-      <origin xyz="1.62648e-18 -2.2554e-50 1.38778e-17" rpy="0 0 0"/>
-      <mass value="2.48241"/>
-      <inertia ixx="0.00179354" ixy="-3.5815e-49" ixz="0" iyy="0.00179354" iyz="0" izz="0.00179354"/>
+      <mass value="2.48"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
     </inertial>
-    <!-- Part spherical_wheel -->
     <visual>
-      <origin xyz="0 0 -0.0425" rpy="0 -0 -1.38667e-32"/>
+      <origin xyz="0 0 -0.0425" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://hospital_robot/meshes/spherical_wheel.stl"/>
       </geometry>
-      <material name="spherical_wheel_material">
-        <color rgba="0.262745 0.282353 0.301961 1"/>
-      </material>
     </visual>
     <collision>
-      <origin xyz="0 0 -0.0425" rpy="0 -0 -1.38667e-32"/>
+      <origin xyz="0 0 -0.0425" rpy="0 0 0"/>
       <geometry>
         <mesh filename="package://hospital_robot/meshes/spherical_wheel.stl"/>
       </geometry>
     </collision>
   </link>
-  <!-- Joint from body to spherical_wheel -->
+  
   <joint name="joint_spherical_wheel" type="fixed">
-    <origin xyz="-0.151116 0.201898 -0.265217" rpy="0 -0 2.42861e-16"/>
+    <origin xyz="-0.151116 0.201898 -0.265217" rpy="0 0 0"/>
     <parent link="body"/>
     <child link="spherical_wheel"/>
-    <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="10"/>
   </joint>
 
-  <link name="lidar_link">
-    </link>
+  <gazebo reference="spherical_wheel">
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+    <material>Gazebo/Grey</material>
+  </gazebo>
 
+  <link name="lidar_link"/>
   <joint name="lidar_joint" type="fixed">
       <parent link="body"/>         
       <child link="lidar_link"/>
-      <origin xyz="-0.148 0.37 0.5" rpy="0 0 0"/> 
+      <origin xyz="-0.148 0.4 0.5" rpy="0 0 0"/> 
   </joint>
 
-  <gazebo>
-  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
-    <updateRate>20</updateRate>
-    <leftJoint>joint_left_wheel</leftJoint>
-    <rightJoint>joint_right_wheel</rightJoint>
-    
-    <wheelSeparation>0.4</wheelSeparation>
-    <wheelDiameter>0.2</wheelDiameter>
-    
-    <wheelTorque>50</wheelTorque>
-    <wheelAcceleration>2.0</wheelAcceleration>
-    
-    <commandTopic>cmd_vel</commandTopic>
-    <odometryTopic>odom</odometryTopic>
-    <odometryFrame>odom</odometryFrame>
-    <robotBaseFrame>base_footprint</robotBaseFrame>
-    
-    <publishWheelTF>true</publishWheelTF>
-    <publishOdomTF>true</publishOdomTF>
-    <publishWheelJointState>true</publishWheelJointState>
-  </plugin>
-</gazebo>
+  <gazebo reference="lidar_link">
+    <sensor type="ray" name="head_hokuyo_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>true</visualize> 
+      <update_rate>20</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>1</resolution>
+            <min_angle>-3.14159</min_angle>
+            <max_angle>3.14159</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.2</min>
+          <max>10.0</max>
+          <resolution>0.01</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
+        <topicName>/scan</topicName>
+        <frameName>lidar_link</frameName>
+      </plugin>
+    </sensor>
+  </gazebo>
 
-<gazebo reference="lidar_link">
-  <sensor type="ray" name="head_hokuyo_sensor">
-    <pose>0 0 0 0 0 0</pose>
-    <visualize>true</visualize> <update_rate>20</update_rate>
-    <ray>
-      <scan>
-        <horizontal>
-          <samples>720</samples>
-          <resolution>1</resolution>
-          <min_angle>0</min_angle>
-          <max_angle>-3.14159265359</max_angle>
-        </horizontal>
-      </scan>
-      <range>
-        <min>0.1</min>
-        <max>10.0</max>
-        <resolution>0.01</resolution>
-      </range>
-      <noise>
-        <type>gaussian</type>
-        <mean>0.0</mean>
-        <stddev>0.01</stddev>
-      </noise>
-    </ray>
-    <plugin name="gazebo_ros_head_hokuyo_controller" filename="libgazebo_ros_laser.so">
-      <topicName>/scan</topicName>
-      <frameName>lidar_link</frameName>
+  <gazebo>
+    <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+      <alwaysOn>true</alwaysOn>
+      <updateRate>20</updateRate>
+      
+      <leftJoint>front_left_wheel_joint</leftJoint>
+      <rightJoint>front_right_wheel_joint</rightJoint>
+      
+      <wheelSeparation>0.4</wheelSeparation> 
+      <wheelDiameter>0.2</wheelDiameter>   
+      <wheelTorque>20</wheelTorque>
+      <wheelAcceleration>1.0</wheelAcceleration>
+      
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      
+      <publishWheelTF>false</publishWheelTF>
+      <publishOdomTF>true</publishOdomTF>
+      <publishWheelJointState>true</publishWheelJointState>
     </plugin>
-  </sensor>
-</gazebo>
+  </gazebo>
 </robot>
