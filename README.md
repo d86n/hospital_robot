@@ -17,3 +17,8 @@ roslaunch hospital_robot gmapping.launch
 roslaunch hospital_robot display.launch
 rosrun teleop_twist_keyboard teleop_twist_keyboard.py
 ```
+
+## Lưu map
+```
+rosrun map_server map_saver -f ~/catkin_ws/src/hospital_robot/maps/hospital_map
+```
