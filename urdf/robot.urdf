@@ -5,7 +5,7 @@
   <joint name="base_joint" type="fixed">
     <parent link="base_footprint"/>
     <child link="body"/>
-    <origin xyz="0 0 0.31" rpy="0 0 0"/> 
+    <origin xyz="0 0 0.31" rpy="0 0 0"/>
   </joint>
 
   <link name="body">
@@ -111,7 +111,7 @@
       </geometry>
     </collision>
   </link>
-  
+
   <joint name="joint_spherical_wheel" type="fixed">
     <origin xyz="-0.151116 0.201898 -0.265217" rpy="0 0 0"/>
     <parent link="body"/>
@@ -126,9 +126,9 @@
 
   <link name="lidar_link"/>
   <joint name="lidar_joint" type="fixed">
-      <parent link="body"/>         
+      <parent link="body"/>
       <child link="lidar_link"/>
-      <origin xyz="-0.148 0.4 0.5" rpy="0 0 0"/> 
+      <origin xyz="-0.15 0.4 0.2" rpy="0 0 0"/>
   </joint>
 
   <gazebo reference="lidar_link">
