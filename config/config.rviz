@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /RobotModel1
+        - /Map1
       Splitter Ratio: 0.5
     Tree Height: 839
   - Class: rviz/Selection
@@ -71,6 +72,10 @@ Visualization Manager:
           Show Axes: false
           Show Trail: false
           Value: true
+        lidar_link:
+          Alpha: 1
+          Show Axes: false
+          Show Trail: false
         spherical_wheel:
           Alpha: 1
           Show Axes: false
@@ -92,6 +97,16 @@ Visualization Manager:
       Update Interval: 0
       Value: true
       Visual Enabled: false
+    - Alpha: 0.699999988079071
+      Class: rviz/Map
+      Color Scheme: map
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic: /map
+      Unreliable: false
+      Use Timestamp: false
+      Value: true
   Enabled: true
   Global Options:
     Background Color: 48; 48; 48
@@ -120,7 +135,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 5.423164367675781
+      Distance: 6.813135147094727
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -128,17 +143,17 @@ Visualization Manager:
         Value: false
       Field of View: 0.7853981852531433
       Focal Point:
-        X: -0.668641209602356
-        Y: 0.5661030411720276
-        Z: 0.27338701486587524
+        X: -0.7378851175308228
+        Y: 0.10737552493810654
+        Z: -0.1745983213186264
       Focal Shape Fixed Size: true
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.4403984248638153
+      Pitch: 0.5603983402252197
       Target Frame: <Fixed Frame>
-      Yaw: 5.603578090667725
+      Yaw: 5.658579349517822
     Saved: ~
 Window Geometry:
   Displays:
