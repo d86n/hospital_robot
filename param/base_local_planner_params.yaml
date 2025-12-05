@@ -1,0 +1,13 @@
+TrajectoryPlannerROS:
+  max_vel_x: 0.3  # Tốc độ tối đa (m/s)
+  min_vel_x: 0.1
+  max_vel_theta: 1.0 # Tốc độ xoay tối đa (rad/s)
+  min_in_place_vel_theta: 0.4
+
+  acc_lim_theta: 3.2
+  acc_lim_x: 2.5
+  acc_lim_y: 2.5
+
+  meter_scoring: true
+
+  holonomic_robot: false # Đặt false nếu robot 2 bánh (differential drive)
