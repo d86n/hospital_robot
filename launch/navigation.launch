@@ -4,6 +4,8 @@
   <arg name="initial_pose_y" default="0.0"/>
   <arg name="initial_pose_a" default="0.0"/>
 
+  <param name="use_map_topic" value="true"/>
+
   <node pkg="map_server" name="map_server" type="map_server" args="$(find hospital_robot)/maps/hospital_map.yaml"/>
 
   <node pkg="amcl" type="amcl" name="amcl">
