@@ -10,6 +10,18 @@ catkin_make
 source devel/setup.bash
 ```
 
+```
+pip install SpeechRecognition gTTS playsound
+sudo apt-get install mpg321 portaudio19-dev python3-pyaudio
+```
+
+### Cap quyen thuc thi file voice_robot.py
+
+```
+roscd hospital_robot
+chmod +x voice_robot.py
+```
+
 ## 1a. Quét map
 ```
 roslaunch hospital_robot gazebo.launch

@@ -1,0 +1,11 @@
+<launch>
+  <include file="$(find hospital_robot)/launch/gazebo.launch"/>
+
+  <node pkg="map_server" name="map_server" type="map_server" args="$(find hospital_robot)/maps/hospital_map.yaml"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0 0 0 0 0 0 map odom 100" />
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find hospital_robot)/config/config.rviz" required="true" />
+
+  <node pkg="hospital_robot" type="voice_robot.py" name="voice_control" output="screen"/>
+</launch>
